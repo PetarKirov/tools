@@ -29,7 +29,8 @@ endif
 # default include/link paths, override by setting DMD (e.g. make -f posix.mak DMD=dmd)
 DMD += -I$(DRUNTIME_PATH)/import -I$(PHOBOS_PATH) -L-L$(PHOBOS_PATH)/generated/$(OS)/release/$(MODEL)
 
-DFLAGS = -w
+override PIC:=$(if $(PIC),-fPIC,)
+DFLAGS = -w $(PIC)
 
 TOOLS = \
     $(ROOT)/rdmd \
